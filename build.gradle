@@ -1,0 +1,75 @@
+plugins {
+    id "java"
+    id "maven"
+    id "maven-publish"
+    id "com.gradle.plugin-publish" version "0.10.1"
+    id "com.jfrog.bintray" version "1.8.4"
+}
+
+group "com.chmyaf.gradle.plugin"
+version "0.5.0"
+def publicationVcsUrl = "https://github.com/chmyaf/gradle-plugin-changelog.git"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile gradleApi()
+    implementation "org.thymeleaf:thymeleaf:3.0.11.RELEASE"
+    implementation "org.yaml:snakeyaml:1.24"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty("bintray.publish.user") ?
+            project.getProperty("bintray.publish.user") :
+            System.getenv("BINTRAY_PUBLISH_USER")
+    key = project.hasProperty("bintray.publish.key") ?
+            project.getProperty("bintray.publish.key") :
+            System.getenv("BINTRAY_PUBLISH_KEY")
+    configurations = ['archives']
+    pkg {
+        repo = project.group
+        name = "gradle-plugin-changelog"
+        licenses = ["Apache-2.0"]
+        vcsUrl = publicationVcsUrl
+        version {
+            name = project.version
+            vcsTag = project.version
+        }
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    getArchiveClassifier().set("sources")
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+pluginBundle {
+    website = 'https://chmyaf.com'
+    vcsUrl = publicationVcsUrl
+    tags = ['doxygen']
+    description = 'Changelog generator'
+
+    plugins {
+        gradlePluginDoxygen {
+            id = "${project.group}.${project.name}"
+            displayName = 'Generate changlogs'
+        }
+    }
+}
