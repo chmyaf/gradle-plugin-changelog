@@ -61,7 +61,9 @@ public class ChangelogGenTask extends DefaultTask {
         FileTemplateResolver templateResolver;
         Context ctx;
 
-        outFile = new File(configTemplate.getOutput());
+        outFile = new File(this.getProject().getProjectDir(),
+                configTemplate.getOutput()
+        );
 
         templateEngine = new TemplateEngine();
         templateResolver = new FileTemplateResolver();
@@ -105,7 +107,9 @@ public class ChangelogGenTask extends DefaultTask {
     }
 
     private File getInputDir() {
-        return new File(this.getCLPE().inputDir);
+        return new File(this.getProject().getProjectDir().getAbsolutePath(),
+                this.getCLPE().inputDir
+        );
     }
 
     private History getHistory() {
@@ -163,7 +167,7 @@ public class ChangelogGenTask extends DefaultTask {
             result = new FileInputStream(file);
         } catch (FileNotFoundException e) {
             throw new GradleScriptException("Can't read file: " +
-                    this.getConfigFile().getAbsolutePath(),
+                    file.getAbsolutePath(),
                     new Exception(e)
             );
         }

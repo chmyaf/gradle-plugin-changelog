@@ -1,5 +1,6 @@
 plugins {
     id "java"
+    id "java-gradle-plugin"
     id "maven"
     id "maven-publish"
     id "com.gradle.plugin-publish" version "0.10.1"
@@ -12,15 +13,54 @@ def publicationVcsUrl = "https://github.com/chmyaf/gradle-plugin-changelog.git"
 
 sourceCompatibility = 1.8
 
+sourceSets {
+    functionalTest {
+        java {
+            srcDir file("src/testFunc/java")
+        }
+        resources {
+            srcDir file("src/testFunc/resources")
+        }
+        compileClasspath += sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath += output + compileClasspath
+    }
+
+}
+
+task functionalTest(type: Test) {
+    testClassesDirs = sourceSets.functionalTest.output.classesDirs
+    classpath = sourceSets.functionalTest.runtimeClasspath
+}
+check.dependsOn functionalTest
+
+gradlePlugin {
+    testSourceSets sourceSets.functionalTest
+}
+
 repositories {
     mavenLocal()
     jcenter()
 }
 
 dependencies {
-    compile gradleApi()
     implementation "org.thymeleaf:thymeleaf:3.0.11.RELEASE"
     implementation "org.yaml:snakeyaml:1.24"
+    testImplementation("org.junit.jupiter:junit-jupiter:5.5.0")
+    functionalTestImplementation("org.junit.jupiter:junit-jupiter:5.5.0")
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+functionalTest {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 publishing {

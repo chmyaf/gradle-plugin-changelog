@@ -1,0 +1,9 @@
+templates:
+  example:
+    template: example.md
+    output: generated.md
+    repo: https://github.com/chmyaf/gradle-plugin-changelog/
+  exampleSecond:
+    template: exampleSecond.md
+    output: generatedSecond.md
+    repo: https://github.com/chmyaf/gradle-plugin-changelog/

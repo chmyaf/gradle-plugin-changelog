@@ -17,9 +17,9 @@
 package com.chmyaf.gradle.plugin.changelog.config;
 
 public class ConfigTemplate {
-    private String output;
-    private String repo;
-    private String template;
+    private String output = "";
+    private String repo = "";
+    private String template = "";
 
     public String getOutput() {
         return output;

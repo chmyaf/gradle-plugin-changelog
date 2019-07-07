@@ -16,12 +16,13 @@
 
 package com.chmyaf.gradle.plugin.changelog.history;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class History {
-    private HistoryRelease firstRelease;
-    private List<HistoryRelease> releases;
-    private HistoryRelease unreleased;
+    private HistoryRelease firstRelease = new HistoryRelease();
+    private List<HistoryRelease> releases = new ArrayList<>();
+    private HistoryRelease unreleased = new HistoryRelease();
 
     public HistoryRelease getFirstRelease() {
         return firstRelease;
