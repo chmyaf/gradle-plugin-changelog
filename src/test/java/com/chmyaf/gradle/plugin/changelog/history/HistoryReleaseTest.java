@@ -1,3 +1,19 @@
+/*
+ * Copyright 2019 Andrey S Teplitskiy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.chmyaf.gradle.plugin.changelog.history;
 
 import org.junit.jupiter.api.Test;
@@ -10,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class HistoryReleaseTest {
 
     @Test
-    void getAdded() {
+    void testGetAdded() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> emptyList = new ArrayList<>();
@@ -19,14 +35,14 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void getDate() {
+    void testGetDate() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         assertNotNull(historyRelease.getDate());
     }
 
     @Test
-    void getFixed() {
+    void testGetFixed() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> emptyList = new ArrayList<>();
@@ -35,7 +51,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void getPublish() {
+    void testGetPublish() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> emptyList = new ArrayList<>();
@@ -45,7 +61,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void getTag() {
+    void testGetTag() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         assertNotNull(historyRelease.getTag());
@@ -53,7 +69,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void getTagPrev() {
+    void testGetTagPrev() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         assertNotNull(historyRelease.getTagPrev());
@@ -61,7 +77,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void getVersion() {
+    void testGetVersion() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         assertNotNull(historyRelease.getVersion());
@@ -69,7 +85,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setAdded() {
+    void testSetAdded() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> empty = new ArrayList<>();
@@ -80,7 +96,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setAddedEdited() {
+    void testSetAddedEdited() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> edited = new ArrayList<>();
@@ -92,7 +108,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setDate() {
+    void testSetDate() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         Date checkDate = new Date();
@@ -102,7 +118,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setFixed() {
+    void testSetFixed() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> empty = new ArrayList<>();
@@ -113,7 +129,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setFixedEdited() {
+    void testSetFixedEdited() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> edited = new ArrayList<>();
@@ -125,7 +141,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setPublish() {
+    void testSetPublish() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> empty = new ArrayList<>();
@@ -136,7 +152,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setPublishEdited() {
+    void testSetPublishEdited() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         ArrayList<String> edited = new ArrayList<>();
@@ -148,7 +164,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setTag() {
+    void testSetTag() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         historyRelease.setTag("v1.0.1");
@@ -156,7 +172,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setTagPrev() {
+    void testSetTagPrev() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         historyRelease.setTagPrev("v1.0.0");
@@ -164,7 +180,7 @@ class HistoryReleaseTest {
     }
 
     @Test
-    void setVersion() {
+    void testSetVersion() {
         HistoryRelease historyRelease = new HistoryRelease();
 
         historyRelease.setVersion("1.0.1");
