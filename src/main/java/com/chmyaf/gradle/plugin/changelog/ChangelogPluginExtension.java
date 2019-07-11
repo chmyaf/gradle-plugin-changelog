@@ -16,8 +16,16 @@
 
 package com.chmyaf.gradle.plugin.changelog;
 
+/**
+ * Changelog plugin parameters.
+ *
+ * Plugin options.
+ */
 public class ChangelogPluginExtension {
+    /// Path to the configuration file.
     String config = "config.yml";
+    /// Path to releases history.
     String history = "history.yml";
+    /// Path to directory with parameters.
     String inputDir = "changelogs";
 }

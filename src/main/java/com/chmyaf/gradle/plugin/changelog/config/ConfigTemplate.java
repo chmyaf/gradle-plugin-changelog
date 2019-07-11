@@ -16,31 +16,67 @@
 
 package com.chmyaf.gradle.plugin.changelog.config;
 
+/**
+ * One of a templates parameters.
+ */
 public class ConfigTemplate {
+    /// Path to output generated data.
     private String output = "";
+    /// Project repository url.
     private String repo = "";
+    /// Path to template file.
     private String template = "";
 
+    /**
+     * Output path getter.
+     *
+     * @return Output path.
+     */
     public String getOutput() {
         return output;
     }
 
+    /**
+     * Repository url getter.
+     *
+     * @return Repository url.
+     */
     public String getRepo() {
         return repo;
     }
 
+    /**
+     * Template path getter.
+     *
+     * @return Path to template.
+     */
     public String getTemplate() {
         return template;
     }
 
+    /**
+     * Output path setter.
+     *
+     * @param output Output path.
+     */
     public void setOutput(String output) {
         this.output = output;
     }
 
+    /**
+     * Repository url setter.
+     *
+     * @param repo Repository url.
+     */
     public void setRepo(String repo) {
         this.repo = repo;
     }
 
+    /**
+     * Template path setter.
+     *
+     * @param template Path to template.
+     */
     public void setTemplate(String template) {
         this.template = template;
     }

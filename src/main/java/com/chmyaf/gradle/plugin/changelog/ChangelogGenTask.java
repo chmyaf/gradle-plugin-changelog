@@ -34,9 +34,17 @@ import java.io.*;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Task changelogGen implementation.
+ *
+ * The "changelogGen" task for plugin.
+ */
 public class ChangelogGenTask extends DefaultTask {
+    /// Plugin extension.
     private ChangelogPluginExtension CLPE;
+    /// Configuration.
     private Config config;
+    /// Releases history.
     private History history;
 
     public ChangelogGenTask() {
@@ -44,6 +52,9 @@ public class ChangelogGenTask extends DefaultTask {
                 findByType(ChangelogPluginExtension.class);
     }
 
+    /**
+     * Main task method.
+     */
     @TaskAction
     public void apply() {
         this.loadConfig();
@@ -52,6 +63,14 @@ public class ChangelogGenTask extends DefaultTask {
         this.getConfig().getTemplates().forEach(this::genChangelog);
     }
 
+    /**
+     * Changelog generator.
+     *
+     * Generate the changelog file for one of templates.
+     *
+     * @param name           Template name.
+     * @param configTemplate Template parameters.
+     */
     private void genChangelog(String name, ConfigTemplate configTemplate) {
         File outFile;
 
@@ -94,32 +113,65 @@ public class ChangelogGenTask extends DefaultTask {
         }
     }
 
+    /**
+     * Plugin extension getter.
+     *
+     * @return Plugin extension.
+     */
     private ChangelogPluginExtension getCLPE() {
         return this.CLPE;
     }
 
+    /**
+     * Configuration getter.
+     *
+     * @return Configuration.
+     */
     private Config getConfig() {
         return this.config;
     }
 
+    /**
+     * Path to configuration file getter.
+     *
+     * @return Path.
+     */
     private File getConfigFile() {
         return new File(this.getInputDir(), this.getCLPE().config);
     }
 
+    /**
+     * Path to directory with parameters getter.
+     *
+     * @return Path.
+     */
     private File getInputDir() {
         return new File(this.getProject().getProjectDir().getAbsolutePath(),
                 this.getCLPE().inputDir
         );
     }
 
+    /**
+     * History of a releases getter.
+     *
+     * @return History.
+     */
     private History getHistory() {
         return this.history;
     }
 
+    /**
+     * File with a history of a releases getter.
+     *
+     * @return File.
+     */
     private File getHistoryFile() {
         return new File(this.getInputDir(), this.getCLPE().history);
     }
 
+    /**
+     * History loader.
+     */
     private void loadHistory() {
         InputStream is = this.loadFileToInputStream(this.getHistoryFile());
         Yaml yaml = new Yaml(new Constructor(History.class));
@@ -153,6 +205,9 @@ public class ChangelogGenTask extends DefaultTask {
         Collections.reverse(releases);
     }
 
+    /**
+     * Configuration loader.
+     */
     private void loadConfig() {
         InputStream is = this.loadFileToInputStream(this.getConfigFile());
         Yaml yaml = new Yaml(new Constructor(Config.class));
@@ -160,6 +215,12 @@ public class ChangelogGenTask extends DefaultTask {
         this.config = yaml.load(is);
     }
 
+    /**
+     * File loader.
+     *
+     * @param file File to load.
+     * @return File.
+     */
     private InputStream loadFileToInputStream(File file) {
         InputStream result;
 

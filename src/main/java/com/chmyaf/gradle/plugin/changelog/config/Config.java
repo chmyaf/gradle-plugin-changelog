@@ -19,13 +19,27 @@ package com.chmyaf.gradle.plugin.changelog.config;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Configuration parameters.
+ */
 public class Config {
+    /// Templates.
     private Map<String, ConfigTemplate> templates = new HashMap<>();
 
+    /**
+     * Templates getter.
+     *
+     * @return Templates.
+     */
     public Map<String, ConfigTemplate> getTemplates() {
         return templates;
     }
 
+    /**
+     * Templates setter.
+     *
+     * @param templates Templates.
+     */
     public void setTemplates(Map<String, ConfigTemplate> templates) {
         this.templates = templates;
     }

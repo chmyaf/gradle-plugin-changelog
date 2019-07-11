@@ -19,7 +19,15 @@ package com.chmyaf.gradle.plugin.changelog;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
+/**
+ * The changelog plugin.
+ */
 public class ChangelogPlugin implements Plugin<Project> {
+    /**
+     * Apply plugin method for the Gradle.
+     *
+     * @param project Project parameters from the Gradle.
+     */
     @Override
     public void apply(Project project) {
         ChangelogGenTask taskChangelogGen;

@@ -19,31 +19,67 @@ package com.chmyaf.gradle.plugin.changelog.history;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * History of a releases.
+ */
 public class History {
+    /// First release.
     private HistoryRelease firstRelease = new HistoryRelease();
+    /// Releases.
     private List<HistoryRelease> releases = new ArrayList<>();
+    /// Unreleased.
     private HistoryRelease unreleased = new HistoryRelease();
 
+    /**
+     * First release getter.
+     *
+     * @return First release.
+     */
     public HistoryRelease getFirstRelease() {
         return firstRelease;
     }
 
+    /**
+     * Releases getter.
+     *
+     * @return Releases.
+     */
     public List<HistoryRelease> getReleases() {
         return releases;
     }
 
+    /**
+     * Unreleased getter.
+     *
+     * @return Unreleased.
+     */
     public HistoryRelease getUnreleased() {
         return unreleased;
     }
 
+    /**
+     * First release setter.
+     *
+     * @param firstRelease First release.
+     */
     public void setFirstRelease(HistoryRelease firstRelease) {
         this.firstRelease = firstRelease;
     }
 
+    /**
+     * Releases setter.
+     *
+     * @param releases Releases.
+     */
     public void setReleases(List<HistoryRelease> releases) {
         this.releases = releases;
     }
 
+    /**
+     * Unreleased setter.
+     *
+     * @param unreleased Unreleased.
+     */
     public void setUnreleased(HistoryRelease unreleased) {
         this.unreleased = unreleased;
     }
