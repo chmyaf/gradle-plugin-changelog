@@ -9,10 +9,6 @@ This is a Gradle plugin for generating a changelog files.
 You can generate one, two or more changelog files and publish their to difference repos.
 For example, You can publish one file only to the BitBucket, and publish second file only to the GitHub.
 
-## Third party:
-
-Plugin uses the Thymeleaf template engine. 
-
 ## Usage
 
 ### Include plugin
@@ -53,6 +49,52 @@ changelog {
 ```
 
 ### Changelogs configuration
+
+Templates configuration:
+
+```yaml
+templates:
+  firstTemplateName:
+    template: firstTemplateFile.md
+    output: path/to/output/firstOutFile.md
+    repo https://repo.url/with/path:
+  secondTemplateName:
+    template: secondTemplateFile.md
+    output: path/to/output/firstOutFile.md
+    repo https://repo.mirror.url/with/path:
+```
+
+Releases history:
+
+```yaml
+unreleased:
+  version: Unreleased
+  date: null
+  added:
+    - Added feature
+  changed:
+    - Changed feature
+  fixed:
+    - Fixed feature
+releases:
+  - version: VersionName
+    tag: versionTag
+    date: 2019-07-01
+    added:
+      - Added feature
+    changed:
+      - Changed feature
+    fixed:
+      - Fixed feature
+firstRelease:
+  version: 0.0.1
+  tag: v0.0.1
+  date: 2019-07-01
+  added:
+    - Init project
+```
+
+### Example
 
 Templates configuration: ```changelogs/config.yml```
 ```yaml
@@ -255,8 +297,15 @@ Other examples can be found in the [src/testFunc/resources](src/testFunc/resourc
 
 This is Open Source software released under [Apache 2.0 license](./LICENSE).
 
+## Third party:
+
+- [Thymeleaf] -- modern server-side Java template engine for both web and standalone environments.
+- [snakeyaml] -- YAML 1.1 processor for the Java Virtual Machine version 7.
+
 ## Links
 
 * [Apache Linense, Version 2.0](https://apache.org/licenses/LICENSE-2.0)
 * [Gradle](https://gradle.org/)
-* [Thymeleaf](https://www.thymeleaf.org/)
+
+[Thymeleaf]: https://www.thymeleaf.org/
+[snakeyaml]: https://bitbucket.org/asomov/snakeyaml/

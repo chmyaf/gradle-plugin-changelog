@@ -26,6 +26,8 @@ import java.util.List;
 public class HistoryRelease {
     /// Added features.
     private List<String> added = new ArrayList<>();
+    /// Changed features.
+    private List<String> changed = new ArrayList<>();
     /// Release date.
     private Date date = new Date();
     /// Fixed issues.
@@ -46,6 +48,15 @@ public class HistoryRelease {
      */
     public List<String> getAdded() {
         return this.added;
+    }
+
+    /**
+     * Changed features getter.
+     *
+     * @return Features.
+     */
+    public List<String> getChanged() {
+        return this.changed;
     }
 
     /**
@@ -109,6 +120,15 @@ public class HistoryRelease {
      */
     public void setAdded(List<String> added) {
         this.added = added;
+    }
+
+    /**
+     * Changed features setter.
+     *
+     * @param changed Features.
+     */
+    public void setChanged(List<String> changed) {
+        this.changed = changed;
     }
 
     /**
