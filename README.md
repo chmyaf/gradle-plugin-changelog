@@ -42,7 +42,7 @@ Default configuration:
 
 ```groovy
 changelog {
-    inputDir = "changelogs"
+    inputDir = ".chmyaf/changelogs"
     config = "config.yml"
     history = "history.yml"
 }
@@ -96,7 +96,7 @@ firstRelease:
 
 ### Example
 
-Templates configuration: ```changelogs/config.yml```
+Templates configuration: ```.chmyaf/changelogs/config.yml```
 ```yaml
 templates:
   example:
@@ -109,7 +109,7 @@ templates:
     repo: https://github.com/chmyaf/gradle-plugin-changelog/
 ```
 
-Releases history: ```changelogs/history.yml```
+Releases history: ```.chmyaf/changelogs/history.yml```
 ```yaml
 unreleased:
   version: Unreleased
@@ -147,7 +147,7 @@ firstRelease:
 
 ```
 
-First template: ```changelog/example.md```
+First template: ```.chmyaf/changelogs/example.md```
 ```markdown
 # BitBucket example
 
@@ -160,7 +160,7 @@ First template: ```changelog/example.md```
 [/][[# th:utext="${history.firstRelease.version}" /]]: [(${config.repo})]src/[(${history.firstRelease.version})]/
 ```
 
-Second template: ```changelog/exampleSecond.md```
+Second template: ```.chmyaf/changelogs/exampleSecond.md```
 
 ```markdown
 # GitHub example
@@ -174,7 +174,7 @@ Without unreleased changes.
 [/][[# th:utext="${history.firstRelease.version}" /]]: [(${config.repo})]releases/tag/[(${history.firstRelease.version})]
 ```
 
-Common template used in both of the above: ```changelog/template_release.md```
+Common template used in both of the above: ```.chmyaf/changelogs/template_release.md```
 
 ```markdown
 ## [[# th:utext="${release.version}" /]][# th:if="${release.date} != null"] - [(${#dates.format(release.date, 'YYYY-MM-dd')})][/]

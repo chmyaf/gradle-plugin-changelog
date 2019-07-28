@@ -27,6 +27,6 @@ class ChangelogPluginExtensionTest {
 
         assertEquals(clpe.config, "config.yml");
         assertEquals(clpe.history, "history.yml");
-        assertEquals(clpe.inputDir, "changelogs");
+        assertEquals(clpe.inputDir, ".chmyaf/changelogs");
     }
 }

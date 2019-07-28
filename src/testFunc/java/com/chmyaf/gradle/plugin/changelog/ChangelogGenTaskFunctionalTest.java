@@ -37,12 +37,13 @@ public class ChangelogGenTaskFunctionalTest {
 
     private void copyExampleProject() throws IOException {
         this.copyExampleProjectFile("build.gradle");
-        new File(this.testProjectDir.getAbsolutePath(), "changelogs").mkdirs();
-        this.copyExampleProjectFile("changelogs/config.yml");
-        this.copyExampleProjectFile("changelogs/history.yml");
-        this.copyExampleProjectFile("changelogs/example.md");
-        this.copyExampleProjectFile("changelogs/exampleSecond.md");
-        this.copyExampleProjectFile("changelogs/template_release.md");
+        new File(this.testProjectDir.getAbsolutePath(), ".chmyaf/changelogs")
+                .mkdirs();
+        this.copyExampleProjectFile(".chmyaf/changelogs/config.yml");
+        this.copyExampleProjectFile(".chmyaf/changelogs/history.yml");
+        this.copyExampleProjectFile(".chmyaf/changelogs/example.md");
+        this.copyExampleProjectFile(".chmyaf/changelogs/exampleSecond.md");
+        this.copyExampleProjectFile(".chmyaf/changelogs/template_release.md");
     }
 
     private void copyExampleProjectFile(String fname) throws IOException {
@@ -50,7 +51,9 @@ public class ChangelogGenTaskFunctionalTest {
         Path dst;
 
         ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource("changelogGenTask/" + fname);
+        URL resource = classLoader.getResource(
+                "changelogGenTask/" + fname
+        );
         if (resource == null) {
             throw new FileNotFoundException("Can't get " + fname);
         }

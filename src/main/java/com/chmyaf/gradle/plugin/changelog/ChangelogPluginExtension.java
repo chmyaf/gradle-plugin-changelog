@@ -27,5 +27,5 @@ public class ChangelogPluginExtension {
     /// Path to releases history.
     String history = "history.yml";
     /// Path to directory with parameters.
-    String inputDir = "changelogs";
+    String inputDir = ".chmyaf/changelogs";
 }
